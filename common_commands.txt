@@ -1,0 +1,3 @@
+./runall_python.sh 2> error.log
+
+open -a "Microsoft Excel" RAISE_SYW_2025-CURRENT.xlsx
