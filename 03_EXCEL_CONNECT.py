@@ -1,3 +1,4 @@
+import boto3
 from openpyxl import load_workbook
 from datetime import datetime, date
 
@@ -27,6 +28,18 @@ try:
 	
 	workbook_dest.save(excel_file_dest)
 
+	s3_client = boto3.client('s3')
+	S3_BUCKET_NAME = 'ec2-sandbox-dcremas'
+	S3_STAGING_PREFIX = 'daily_files_excel/'
+	s3_key = f"{S3_STAGING_PREFIX}RAISE-SYW_{month_tod}-{day_tod}-{year_tod}.xlsx"
+	with open(excel_file_dest, 'rb') as f:
+		s3_response = s3_client.put_object(
+			Body=f,
+			Bucket=S3_BUCKET_NAME,
+			Key=s3_key,
+			ContentType='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+			)
+    
 	print(f"Excel file {excel_file_dest} updated successfully.")
 
 except Exception as e:

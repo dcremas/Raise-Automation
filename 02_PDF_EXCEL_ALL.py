@@ -3,7 +3,7 @@ from datetime import datetime, date
 import pdfplumber
 import pandas as pd
 
-directory = os.listdir('/Users/dustincremascoli/Automation/Raise/FILES_RAISE')
+directory = os.listdir('FILES_RAISE')
 directory.sort()
 
 date_tod = date.today().strftime("%Y-%m-%d")

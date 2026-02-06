@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'] # Define required scopes
-ATTACHMENTS = '/Users/dustincremascoli/Automation/Raise/FILES_RAISE/'
+ATTACHMENTS = 'FILES_RAISE/'
 creds = None
 
 if os.path.exists('token.json'):
